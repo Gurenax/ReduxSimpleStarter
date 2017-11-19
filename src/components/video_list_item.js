@@ -1,6 +1,7 @@
 import React from 'react';
 
 const VideoListItem = ({video}) => {
+  // es6 syntax: instead of passing props then const video = props.video, just pass {video}
   const imageUrl = video.snippet.thumbnails.default.url;
 
   return (
