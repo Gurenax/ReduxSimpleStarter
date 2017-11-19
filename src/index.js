@@ -5,6 +5,7 @@ import YTSearch from 'youtube-api-search';
 // Our components
 import SearchBar from './components/search_bar';
 import VideoList from './components/video_list';
+import VideoDetail from './components/video_detail';
 
 // API Key for YouTube stored in .env
 const API_KEY = process.env.YOUTUBE_API_KEY;
@@ -28,6 +29,7 @@ class App extends Component {
     return (
       <div>
         <SearchBar />
+        <VideoDetail video={this.state.videos[0]} />
         <VideoList videos={this.state.videos} />
       </div>
     );
