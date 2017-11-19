@@ -1,18 +1,37 @@
-import React from 'react';
+import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
+import YTSearch from 'youtube-api-search';
+
 // Our components
 import SearchBar from './components/search_bar';
+import VideoList from './components/video_list';
 
+// API Key for YouTube stored in .env
 const API_KEY = process.env.YOUTUBE_API_KEY;
 
 // Create a new component.
 // This component should produce some HTML.
-const App = () => {
-  return (
-    <div>
-      <SearchBar />
-    </div>
-  );
+class App extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      videos: []
+    };
+
+    YTSearch({key: API_KEY, term: 'surfboards'}, (videos) => {
+      this.setState({ videos:videos }); // ES6: WHen name of variable is same as key, just say "videos"
+    });
+  }
+
+  render() {
+    return (
+      <div>
+        <SearchBar />
+        <VideoList videos={this.state.videos} />
+      </div>
+    );
+  }
 }
 
 // Take this component's generated HTML
