@@ -1,4 +1,4 @@
-# Redux Simple Starter
+# React Simple YouTube App
 
 ### Getting Started
 ```
